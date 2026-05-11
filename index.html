@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Automatización digital para negocios. WhatsApp automático, agendas, pedidos y chatbots.">
+  
+  <title>Sebastián Araya | Automatización Digital</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --accent: #38bdf8;
+      --whatsapp: #25D366;
+      --whatsapp-hover: #1ebc57;
+      --border: #334155;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      text-align: center;
+      padding: 80px 0 50px;
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
+    }
+h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin: 0 auto 40px;
+    }
+
+    .intro-card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .intro-card h2 {
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    /* =========================
+       GRID SERVICIOS
+    ========================= */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 60px 0;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+
+      transition: 0.3s ease;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 4px;
+
+      background: var(--accent);
+
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .features {
+      list-style: none;
+      margin: 20px 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 12px;
+
+      color: #dbe4ee;
+      font-size: 0.95rem;
+    }
+
+    .features li i {
+      color: var(--whatsapp);
+      font-size: 0.85rem;
+    }
+
+    /* =========================
+       BOTONES
+    ========================= */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      width: 100%;
+
+      padding: 14px 20px;
+
+      border-radius: 10px;
+
+      background: var(--whatsapp);
+      color: white;
+
+      text-decoration: none;
+      font-weight: 600;
+
+      transition: 0.3s ease;
+
+      margin-top: auto;
+    }
+
+    .btn:hover {
+      background: var(--whatsapp-hover);
+      transform: scale(1.02);
+    }
+
+    /* =========================
+       INFO SECTION
+    ========================= */
+
+    .info-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+
+      margin-bottom: 60px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    footer p:last-child {
+      margin-top: 10px;
+      opacity: 0.7;
+      font-size: 0.8rem;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 768px) {
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .info-section {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: 95%;
+      }
+
+      .card {
+        padding: 25px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <div class="container">
+
+      <h1>Sebastián Araya</h1>
+
+      <p class="subtitle">
+        Automatización digital para negocios que quieren ahorrar tiempo y vender más.
+      </p>
+
+      <div class="intro-card">
+
+        <h2>
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          ¿En qué te puedo ayudar?
+        </h2>
+
+        <p>
+          Automatizo procesos para negocios: WhatsApp, pedidos, agendas,
+          formularios y atención automática.
+        </p>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <div class="services-grid">
+
+      <!-- CARD 1 -->
+
+      <div class="card">
+
+        <div>
+
+          <div class="card-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+
+          <h2>Automatización WhatsApp</h2>
+
+          <p>
+            Respuestas automáticas, catálogos y atención inmediata.
+          </p>
+
+          <ul class="features">
+            <li><i class="fa-solid fa-check"></i> Atención 24/7</li>
+            <li><i class="fa-solid fa-check"></i> Respuestas automáticas</li>
+            <li><i class="fa-solid fa-check"></i> Catálogo integrado</li>
+          </ul>
+
+        </div>
+
+        <a class="btn"
+           href="https://wa.me/56934944902?text=Hola,%20quiero%20cotizar%20automatización%20de%20WhatsApp"
+           target="_blank">
+
+          <i class="fa-brands fa-whatsapp"></i>
+          Cotizar ahora
+
+        </a>
+
+      </div>
+
+      <!-- CARD 2 -->
+
+      <div class="card">
+
+        <div>
+
+          <div class="card-icon">
+            <i class="fa-regular fa-calendar-check"></i>
+          </div>
+
+          <h2>Agenda Automática</h2>
+
+          <p>
+            Tus clientes reservan solos mientras tú recibes las notificaciones.
+          </p>
+
+          <ul class="features">
+            <li><i class="fa-solid fa-check"></i> Agenda 24/7</li>
+            <li><i class="fa-solid fa-check"></i> Recordatorios automáticos</li>
+            <li><i class="fa-solid fa-check"></i> Gestión organizada</li>
+          </ul>
+
+        </div>
+
+        <a class="btn"
+           href="https://wa.me/56934944902?text=Hola,%20quiero%20cotizar%20una%20agenda%20automática"
+           target="_blank">
+
+          <i class="fa-brands fa-whatsapp"></i>
+          Consultar agenda
+
+        </a>
+
+      </div>
+
+      <!-- CARD 3 -->
+
+      <div class="card">
+
+        <div>
+
+          <div class="card-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+
+          <h2>Pedidos Automatizados</h2>
+
+          <p>
+            Recibe pedidos organizados automáticamente.
+          </p>
+
+          <ul class="features">
+            <li><i class="fa-solid fa-check"></i> Formularios web</li>
+            <li><i class="fa-solid fa-check"></i> Confirmación automática</li>
+            <li><i class="fa-solid fa-check"></i> Control de stock</li>
+          </ul>
+
+        </div>
+
+        <a class="btn"
+           href="https://wa.me/56934944902?text=Hola,%20quiero%20cotizar%20sistema%20de%20pedidos"
+           target="_blank">
+
+          <i class="fa-brands fa-whatsapp"></i>
+          Ver soluciones
+
+        </a>
+
+      </div>
+
+      <!-- CARD 4 -->
+
+      <div class="card">
+
+        <div>
+
+          <div class="card-icon">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+
+          <h2>Chatbots Inteligentes</h2>
+
+          <p>
+            Bots que responden preguntas y ayudan a cerrar ventas.
+          </p>
+
+          <ul class="features">
+            <li><i class="fa-solid fa-check"></i> IA Conversacional</li>
+            <li><i class="fa-solid fa-check"></i> Derivación humana</li>
+            <li><i class="fa-solid fa-check"></i> Automatización total</li>
+          </ul>
+
+        </div>
+
+        <a class="btn"
+           href="https://wa.me/56934944902?text=Hola,%20quiero%20información%20sobre%20chatbots"
+           target="_blank">
+
+          <i class="fa-brands fa-whatsapp"></i>
+          Cotizar chatbot
+
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- INFO -->
+
+    <div class="info-section">
+
+      <div class="card">
+
+        <h2>
+          <i class="fa-solid fa-credit-card"></i>
+          Medios de Pago
+        </h2>
+
+        <ul class="features">
+          <li><i class="fa-solid fa-money-bill"></i> Pago completo</li>
+          <li><i class="fa-solid fa-hand-holding-dollar"></i> Pago en cuotas</li>
+          <li><i class="fa-solid fa-file-invoice"></i> Factura si corresponde</li>
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h2>
+          <i class="fa-solid fa-user-astronaut"></i>
+          Sobre Mí
+        </h2>
+
+        <p>
+          Soy Sebastián Araya y desarrollo soluciones digitales simples
+          para automatizar negocios y ahorrar tiempo.
+        </p>
+
+        <p>
+          Cada proyecto se adapta a las necesidades reales del cliente.
+        </p>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+
+    <div class="container">
+
+      <p>&copy; 2026 Sebastián Araya - Automatización Digital</p>
+
+      <p>
+        Diseñado para automatizar el crecimiento de negocios.
+      </p>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
